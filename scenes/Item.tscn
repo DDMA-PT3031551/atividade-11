@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://item_scene"]
+
+[ext_resource type="Script" path="res://scripts/Item.gd" id="1_item"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 18.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1"]
+size = Vector2(36, 36)
+
+[node name="Item" type="Area2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_item")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_1")
+modulate = Color(1, 0.843137, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
